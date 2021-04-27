@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CloseModal,
   InfoModalWrapper,
@@ -9,8 +9,29 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { Line } from "react-chartjs-2";
 
-const Modal = ({ setModal, cryptocurrency, result }) => {
-  const [arrData] = useState([15, 22, 25]);
+const Modal = ({ setModal, cryptocurrency,coin, result,  hourGraph }) => {
+  const [arrData, setArrData] = useState([]);
+  const [arrTime, setArrTime] = useState([])
+
+
+  useEffect(() => {
+    const getQuote = () => {
+      hourGraph.forEach((e) => {
+        setArrData((arrData) => [...arrData, e.open]);
+      });
+    };
+    getQuote();
+  }, [hourGraph]);
+
+  useEffect(() => {
+    const getQuote = () => {
+      hourGraph.forEach((e) => {
+        setArrTime((arrTime) => [...arrTime, e.time]);
+      });
+    };
+    getQuote();
+  }, [hourGraph]);
+
 
   return (
     <ModalBackdrop
@@ -27,10 +48,10 @@ const Modal = ({ setModal, cryptocurrency, result }) => {
         <LineContainer>
           <Line
             data={{
-              labels: arrData,
+              labels: arrTime,
               datasets: [
                 {
-                  label: `${cryptocurrency}`,
+                  label: `${cryptocurrency} in ${coin} in last 24h`,
                   data: arrData,
                   fill: false,
                   borderColor: "rgba(0,0,0,0.4)",
