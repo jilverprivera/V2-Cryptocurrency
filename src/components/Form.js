@@ -22,8 +22,10 @@ const Form = ({ setCoin, setCryptocurrency }) => {
     { code: "COP", name: "Colombian peso" },
     { code: "EUR", name: "Euro" },
     { code: "MXN", name: "Mexican peso" },
+    { code: "NZD", name: "New Zealand Dollar" },
     { code: "USD", name: "U.S. dollar" },
     { code: "GBP", name: "Pound sterling" },
+    { code: "JPY", name: "Yen" },
   ];
 
   const [currency, SelectCurrency] = useMoney(
