@@ -49,6 +49,9 @@ export const HeadingTitle = styled.h1`
     display: block;
     background-color: #617d98;
   }
+  @media (max-width: 768px) {
+    font-size: 35px;
+  }
 `;
 
 //Form
@@ -187,18 +190,18 @@ export const InfoModalWrapper = styled.div`
 
   .info {
     // border: 2px solid #000;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 14px;
       margin: 5px 0px;
     }
   }
   .info-value {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: 5px;
     @media (max-width: 768px) {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
