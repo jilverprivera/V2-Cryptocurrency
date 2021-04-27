@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Container = styled.main`
+export const Container = styled(motion.main)`
   width: 90%;
   max-width: 1500px;
   height: 100vh;
@@ -20,6 +20,12 @@ export const Wrapper = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Image = styled.img`
@@ -32,13 +38,13 @@ export const Image = styled.img`
 `;
 export const HeadingTitle = styled.h1`
   text-align: center;
-  font-size: 50px;
+  font-size: 45px;
   margin-bottom: 2rem;
   color: #f0f2f5;
   &::after {
     content: "";
-    width: 50%;
-    margin: 0 auto;
+    width: 60%;
+    margin: 10px auto;
     height: 5px;
     display: block;
     background-color: #617d98;
@@ -64,18 +70,22 @@ export const Button = styled.input`
   color: #172026;
   border: none;
   outline: none;
+  text-transform: uppercase;
   transition: background-color 0.4s ease;
+  margin-bottom: 20px;
   &:hover {
-    background-color: #dae2ec;
+    background-color: #1a2039;
+    color: #f0f2f5;
     cursor: pointer;
   }
 `;
 
 export const Label = styled.label`
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: 1px;
   color: #f0f2f5;
   display: block;
+  margin: 10px 0px 5px;
 `;
 export const Select = styled.select`
   width: 100%;
@@ -84,10 +94,34 @@ export const Select = styled.select`
   -webkit-appearance: none;
   outline: none;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1px;
 `;
 
+//Quote
+export const QuoteWrapper = styled(motion.div)`
+  width: 100%;
+  .result {
+    color: #f0f2f5;
+    // border: 2px solid #000;
+    font-size: 18px;
+    text-align: center;
+    margin: 5px 0px;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  .result-value {
+    font-size: 20px;
+    margin-left: 5px;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+
+// Modal
 export const ModalBackdrop = styled(motion.div)`
   position: fixed;
   z-index: 100;
@@ -110,6 +144,7 @@ export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   &::-webkit-scrollbar {
     width: 5px;
     height: 0px;
@@ -134,8 +169,61 @@ export const LineContainer = styled.div`
   max-width: 900px;
   border
   margin: 0 auto;
-  height: 50vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  // border: 2px solid #000;
+  `;
+
+export const InfoModalWrapper = styled.div`
+  // border: 2px solid #000;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+
+  .info {
+    // border: 2px solid #000;
+    font-size: 18px;
+    text-align: center;
+    @media (max-width: 768px) {
+      font-size: 16px;
+      margin: 5px 0px;
+    }
+  }
+  .info-value {
+    font-size: 22px;
+    margin-left: 5px;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const ModalButton = styled.button`
+  margin-top: 1.2rem;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 16px;
+  background-color: #617d98;
+  width: 100%;
+  border-radius: 5px;
+  color: #172026;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  transition: background-color 0.4s ease;
+  margin-bottom: 20px;
+  &:hover {
+    background-color: #1a2039;
+    color: #f0f2f5;
+    cursor: pointer;
+  }
 `;

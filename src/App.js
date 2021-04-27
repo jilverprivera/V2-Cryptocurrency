@@ -12,6 +12,7 @@ import {
 } from "./styles/General.styles";
 import Loader from "./components/Loader";
 import Modal from "./components/Modal";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [coin, setCoin] = useState("");
@@ -47,21 +48,28 @@ const App = () => {
   );
 
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.75, type: "spring", stiffness: 100 }}
+    >
       <Wrapper>
-        <div>
+        <div className="info-wrapper">
           <HeadingTitle>Cryptocurrency trader</HeadingTitle>
           <Form setCoin={setCoin} setCryptocurrency={setCryptocurrency} />
           {Component}
-          {modal && (
-            <Modal
-              setModal={setModal}
-              dailyGraph={dailyGraph}
-              cryptocurrency={cryptocurrency}
-            />
-          )}
+          <AnimatePresence exitBeforeEnter>
+            {modal && (
+              <Modal
+                setModal={setModal}
+                cryptocurrency={cryptocurrency}
+                result={result}
+                dailyGraph={dailyGraph}
+              />
+            )}
+          </AnimatePresence>
         </div>
-        <div>
+        <div className="image-wrapper">
           <Image src={Crypto} alt="crypto-name" style={{ width: "100%" }} />
         </div>
       </Wrapper>

@@ -54,7 +54,7 @@ const Form = ({ setCoin, setCryptocurrency }) => {
       {error && <p className="error">Oops... fill the fields please</p>}
       <SelectCurrency />
       <SelectCrypto />
-      <Button type="submit" value="Calculate" />
+      <Button type="submit" value="Get quote" />
     </FormContainer>
   );
 };
