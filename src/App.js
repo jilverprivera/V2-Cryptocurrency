@@ -19,7 +19,7 @@ const App = () => {
   const [cryptocurrency, setCryptocurrency] = useState("");
   const [result, setResult] = useState({});
 
-  const [dailyGraph, setDailyGraph] = useState({});
+  const [hourGraph, setHourGraph] = useState({});
   const [modal, setModal] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -29,18 +29,16 @@ const App = () => {
       if (coin === "" || cryptocurrency === "") return;
       setIsLoading(true);
       const urlData = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${cryptocurrency}&tsyms=${coin}`;
-      const urlDailyData = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=${cryptocurrency}&tsym=${coin}&limit=50`;
-      // const urlHourData = `https://min-api.cryptocompare.com/data/v2/histohour?fsym=${cryptocurrency}&tsym=${coin}&limit=20`;
+      const urlHourData = `https://min-api.cryptocompare.com/data/v2/histohour?fsym=${cryptocurrency}&tsym=${coin}&limit=24`;
       const resultData = await axios.get(urlData);
-      const dailyGraphData = await axios.get(urlDailyData);
+      const hourData = await axios.get(urlHourData);
 
       setResult(resultData.data.DISPLAY[cryptocurrency][coin]);
-      setDailyGraph(dailyGraphData.data.Data.Data);
+      setHourGraph(hourData.data.Data.Data);
       setIsLoading(false);
     };
     getQuote();
   }, [coin, cryptocurrency]);
-
   const Component = isLoading ? (
     <Loader />
   ) : (
@@ -64,7 +62,8 @@ const App = () => {
                 setModal={setModal}
                 cryptocurrency={cryptocurrency}
                 result={result}
-                dailyGraph={dailyGraph}
+                coin={coin}
+                hourGraph={hourGraph}
               />
             )}
           </AnimatePresence>
