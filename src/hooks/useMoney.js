@@ -8,7 +8,7 @@ const useMoney = (label, initialState, options) => {
     <Fragment>
       <Label>{label}</Label>
       <Select onChange={(e) => setState(e.target.value)} value={state}>
-        <option value="Select">Select</option>
+        <option value="">- Select -</option>
         {options.map((coin) => (
           <option value={coin.code} key={coin.code}>
             {coin.name}

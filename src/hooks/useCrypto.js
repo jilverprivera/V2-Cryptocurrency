@@ -8,7 +8,7 @@ const useCrypto = (label, initialState, options) => {
     <Fragment>
       <Label>{label}</Label>
       <Select onChange={(e) => setCrypto(e.target.value)} value={crypto}>
-        <option value="Select">Select</option>
+        <option value="">- Select -</option>
         {data.map((coin) => (
           <option value={coin.CoinInfo.Name} key={coin.CoinInfo.Id}>
             {coin.CoinInfo.FullName}
